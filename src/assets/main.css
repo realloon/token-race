@@ -1,0 +1,48 @@
+:root {
+  color-scheme: light dark;
+
+  scrollbar-gutter: stable both-edges;
+
+  --color-bg: light-dark(#f5f5f3, #151515);
+  --color-panel: light-dark(#ffffff, #1d1d1d);
+  --color-border: light-dark(#d6d6d2, #3a3a3a);
+  --color-text: light-dark(#1f1f1f, #e5e7eb);
+  --color-text-secondary: light-dark(#5f5f5a, #9ca3af);
+  --color-text-muted: light-dark(#858580, #6b7280);
+  --color-primary: light-dark(#1f1f1f, #fafafa);
+  --color-primary-subtle: light-dark(#e7e7e4, #2a2a2a);
+  --color-primary-foreground: light-dark(#ffffff, #151515);
+  --color-primary-disabled: light-dark(#d2d2ce, #3a3a3a);
+  --color-primary-focus: light-dark(#1f1f1f2e, #fafafa1f);
+  --color-danger: light-dark(#b42318, #f87171);
+  --color-danger-bg: light-dark(#fde8e7, #3a1d24);
+  --color-success: light-dark(#18794e, #4ade80);
+  --color-success-bg: light-dark(#e5f6ed, #14532d);
+  --color-error: light-dark(#b42318, #fca5a5);
+  --color-error-bg: light-dark(#fde8e7, #7f1d1d);
+  --color-output: light-dark(#0369a1, #7dd3fc);
+
+  --sans: 'PT Sans', system-ui, sans-serif;
+  --serif: 'PT Serif', serif;
+  --mono: 'PT Mono', monospace;
+}
+
+body {
+  margin: unset;
+  min-height: 100vh;
+  font-family: var(--sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

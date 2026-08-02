@@ -1,0 +1,31 @@
+{
+  "name": "token-race",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "deploy": "bun run build && wrangler deploy",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build"
+  },
+  "dependencies": {
+    "openai": "^7.3.0",
+    "vue": "^3.5.40"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.50.0",
+    "@cloudflare/workers-types": "^5.20260801.1",
+    "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^24.13.3",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/tsconfig": "^0.9.1",
+    "npm-run-all2": "^9.0.2",
+    "typescript": "~6.0.0",
+    "vite": "^8.1.5",
+    "vue-tsc": "^3.3.7",
+    "wrangler": "^4.118.0"
+  }
+}
