@@ -50,7 +50,9 @@ function responseContent() {
       </span>
       <div class="card-text">
         <span class="name">
-          <a :href="result.provider.url">{{ result.provider.name }}</a>
+          <a :href="result.provider.url" target="_block">
+            {{ result.provider.name }}
+          </a>
         </span>
         <div class="timings">
           <span v-if="result.timeToFirstToken !== undefined" class="metric">
