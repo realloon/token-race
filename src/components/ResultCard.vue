@@ -49,7 +49,9 @@ function responseContent() {
         }}
       </span>
       <div class="card-text">
-        <span class="name">{{ result.provider.name }}</span>
+        <span class="name">
+          <a :href="result.provider.url">{{ result.provider.name }}</a>
+        </span>
         <div class="timings">
           <span v-if="result.timeToFirstToken !== undefined" class="metric">
             TTFT {{ result.timeToFirstToken.toFixed(0) }} ms
@@ -145,7 +147,11 @@ function responseContent() {
 
 <style scoped>
 .card {
-  background: var(--color-panel);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  background-color: var(--color-panel);
   border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 12px;
@@ -159,15 +165,13 @@ function responseContent() {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 12px;
 }
 
 .card-text {
   display: flex;
   align-items: baseline;
   gap: 16px;
-  min-width: 0;
 
   .name {
     overflow: hidden;
@@ -206,6 +210,10 @@ function responseContent() {
   background: var(--color-bg);
   color: var(--color-text-secondary);
   font-size: 11px;
+
+  @media (max-width: 560px) {
+    margin-left: 0;
+  }
 }
 
 .timings {
@@ -224,18 +232,11 @@ function responseContent() {
   color: inherit;
 }
 
-@media (max-width: 560px) {
-  .mode {
-    margin-left: 0;
-  }
-}
-
 .tokens {
   display: flex;
   gap: 14px;
   font-size: 12px;
   color: var(--color-text-secondary);
-  margin-bottom: 10px;
 
   b {
     color: var(--color-text);
@@ -259,15 +260,16 @@ pre {
 }
 
 .raw-button {
-  display: block;
-  margin-top: 10px;
-  padding: 0;
-  border: none;
-  background: none;
+  align-self: start;
   color: var(--color-text-muted);
-  cursor: pointer;
+  background-color: transparent;
+
   font: inherit;
   font-size: 12px;
+
+  padding: unset;
+  border: unset;
+  cursor: pointer;
   transition: 0.2s;
 
   &:hover {

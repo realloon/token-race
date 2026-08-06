@@ -3,6 +3,7 @@ import type OpenAI from 'openai'
 export interface RelayProvider {
   id: string
   name: string
+  url: string
 }
 
 export type ReasoningEffort = Exclude<OpenAI.ReasoningEffort, null>
