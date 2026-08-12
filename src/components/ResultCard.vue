@@ -3,18 +3,14 @@ import { computed, ref } from 'vue'
 import { cachedTokensOf, outputTokensPerSecond } from '@/utils/tokens'
 import type { TestResult } from '@/types'
 
-const props = defineProps<{ result: TestResult }>()
+const { result } = defineProps<{ result: TestResult }>()
 
 type ResponseView = 'output_text' | 'usage' | 'raw'
 
 const responseView = ref<ResponseView>('usage')
 
 const outputTokenRate = computed(() =>
-  outputTokensPerSecond(
-    props.result.usage,
-    props.result.latency,
-    props.result.timeToFirstToken,
-  ),
+  outputTokensPerSecond(result.usage, result.latency, result.timeToFirstToken),
 )
 
 function formatJson(value: unknown) {
@@ -22,8 +18,6 @@ function formatJson(value: unknown) {
 }
 
 function responseContent() {
-  const result = props.result
-
   if (responseView.value === 'output_text') {
     return result.raw?.output_text ?? result.outputText
   }

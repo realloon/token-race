@@ -3,12 +3,10 @@ import type { TestRequest } from '@/types'
 import { computed } from 'vue'
 import IconClose from './icons/IconClose.vue'
 
-const props = defineProps<{ request: TestRequest }>()
+const { request } = defineProps<{ request: TestRequest }>()
 
 const activeInputs = computed(() =>
-  props.request.stream
-    ? props.request.streamInputs
-    : props.request.completeInputs,
+  request.stream ? request.streamInputs : request.completeInputs,
 )
 </script>
 
