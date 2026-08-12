@@ -21,17 +21,11 @@ const { request, selectedIds, running, results, toggle, runAll } =
       <span class="model-name" :title="request.model">
         {{ request.model }}
       </span>
-      <div
-        class="mode-switch"
-        :class="{ stream: request.stream }"
-        role="group"
-        aria-label="Response mode"
-      >
+      <div class="mode-switch" :class="{ stream: request.stream }">
         <button
           type="button"
           class="mode-button"
           :class="{ active: !request.stream }"
-          :aria-pressed="!request.stream"
           @click="request.stream = false"
         >
           Complete
@@ -40,7 +34,6 @@ const { request, selectedIds, running, results, toggle, runAll } =
           type="button"
           class="mode-button"
           :class="{ active: request.stream }"
-          :aria-pressed="request.stream"
           @click="request.stream = true"
         >
           Stream
@@ -51,7 +44,6 @@ const { request, selectedIds, running, results, toggle, runAll } =
         class="edit-request"
         commandfor="request-editor"
         command="show-modal"
-        aria-label="Edit request"
       >
         <IconEditor />
       </button>
@@ -67,7 +59,7 @@ const { request, selectedIds, running, results, toggle, runAll } =
     @run="runAll"
   />
 
-  <section class="results" aria-live="polite">
+  <section class="results">
     <div class="results-head">
       <h2>Results</h2>
       <span v-if="running">Testing selected providers...</span>

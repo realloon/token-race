@@ -92,11 +92,7 @@ function responseContent() {
       >
         View response details
       </button>
-      <dialog
-        :id="`raw-response-${result.provider.id}`"
-        class="raw-dialog"
-        :aria-labelledby="`raw-response-title-${result.provider.id}`"
-      >
+      <dialog :id="`raw-response-${result.provider.id}`" class="raw-dialog">
         <header class="raw-dialog-header">
           <h2 :id="`raw-response-title-${result.provider.id}`">
             Response details
@@ -106,15 +102,9 @@ function responseContent() {
           </form>
         </header>
         <div class="response-content" :class="`view-${responseView}`">
-          <div
-            class="response-switch"
-            role="tablist"
-            aria-label="Response view"
-          >
+          <div class="response-switch">
             <button
               type="button"
-              role="tab"
-              :aria-selected="responseView === 'usage'"
               :class="{ active: responseView === 'usage' }"
               @click="responseView = 'usage'"
             >
@@ -122,8 +112,6 @@ function responseContent() {
             </button>
             <button
               type="button"
-              role="tab"
-              :aria-selected="responseView === 'output_text'"
               :class="{ active: responseView === 'output_text' }"
               @click="responseView = 'output_text'"
             >
@@ -131,8 +119,6 @@ function responseContent() {
             </button>
             <button
               type="button"
-              role="tab"
-              :aria-selected="responseView === 'raw'"
               :class="{ active: responseView === 'raw' }"
               @click="responseView = 'raw'"
             >

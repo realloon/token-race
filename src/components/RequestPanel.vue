@@ -12,22 +12,11 @@ const activeInputs = computed(() =>
 </script>
 
 <template>
-  <dialog
-    id="request-editor"
-    class="request-drawer"
-    aria-labelledby="request-editor-title"
-  >
+  <dialog id="request-editor" class="request-drawer">
     <header class="drawer-header">
       <h2 id="request-editor-title">Edit request</h2>
       <form method="dialog">
-        <button
-          type="submit"
-          class="close-button"
-          value="cancel"
-          aria-label="Close"
-        >
-          Close
-        </button>
+        <button type="submit" class="close-button" value="cancel">Close</button>
       </form>
     </header>
 
@@ -64,7 +53,7 @@ const activeInputs = computed(() =>
       <div class="input-list">
         <template v-for="(m, i) in activeInputs" :key="i">
           <span class="role">{{ m.role }}</span>
-          <input v-model="m.content" :aria-label="`Message ${i + 1} content`" />
+          <input v-model="m.content" />
         </template>
       </div>
     </div>
