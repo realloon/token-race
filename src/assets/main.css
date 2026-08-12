@@ -3,7 +3,7 @@
   --serif: 'PT Serif', serif;
   --mono: 'PT Mono', monospace;
 
-  --color-bg: light-dark(#f5f5f3, #151515);
+  --color-page: light-dark(#f5f5f3, #151515);
   --color-panel: light-dark(#ffffff, #1d1d1d);
   --color-border: light-dark(#d6d6d2, #3a3a3a);
   --color-text: light-dark(#1f1f1f, #e5e7eb);
@@ -26,10 +26,10 @@
 :root {
   color-scheme: light dark;
   color: var(--color-text);
-  background-color: var(--color-bg);
+  background-color: var(--color-page);
 
   font-family: var(--sans);
-  scrollbar-gutter: stable both-edges;
+  line-height: 1;
 
   @media (prefers-color-scheme: dark) {
     -webkit-font-smoothing: antialiased;
@@ -37,8 +37,8 @@
 }
 
 #app {
-    max-width: 960px;
-  padding: 24px;
+  max-width: 960px;
+  padding: 24px 32px;
 }
 
 body {
@@ -48,4 +48,26 @@ body {
 a {
   color: inherit;
   text-decoration: unset;
+}
+
+button {
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: bold;
+  line-height: 1;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: 1rem;
+  margin-block: unset;
 }

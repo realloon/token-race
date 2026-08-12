@@ -51,7 +51,7 @@ const emit = defineEmits<{
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  background: var(--color-panel);
+  background-color: var(--color-panel);
   border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 12px;
@@ -69,7 +69,7 @@ const emit = defineEmits<{
 .provider-heading {
   flex-shrink: 0;
   margin: 0;
-  font-size: 13px;
+  font-size: 0.75rem;
 }
 
 .checks {
@@ -118,21 +118,20 @@ button.run {
   padding: 0 12px;
   border: none;
   border-radius: 6px;
-  background: var(--color-primary);
+  background-color: var(--color-primary);
   color: var(--color-primary-foreground);
   cursor: pointer;
-  font: inherit;
   font-size: 0.875rem;
   font-weight: bold;
   flex-shrink: 0;
   transition: 0.2s;
 
   &:hover:not(:disabled) {
-    background: var(--color-text);
+    background-color: var(--color-text);
   }
 
   &:disabled {
-    background: var(--color-primary-disabled);
+    background-color: var(--color-primary-disabled);
     color: var(--color-text-muted);
     cursor: not-allowed;
   }

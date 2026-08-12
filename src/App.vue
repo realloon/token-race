@@ -132,7 +132,7 @@ header {
     left: 2px;
     width: calc(50% - 2px);
     border-radius: 13px;
-    background: var(--color-panel);
+    background-color: var(--color-panel);
     box-shadow: 0 1px 4px #00000016;
     pointer-events: none;
     transition: 0.2s;
@@ -149,10 +149,9 @@ header {
   flex: 1;
   padding: 5px 9px;
   border: none;
-  background: transparent;
+  background-color: transparent;
   color: var(--color-text);
   cursor: pointer;
-  font: inherit;
   font-size: 12px;
 
   transition: 0.2s;
@@ -173,10 +172,9 @@ header {
   padding: 0;
   border: 1px solid var(--color-border);
   border-radius: 50%;
-  background: transparent;
+  background-color: transparent;
   color: var(--color-text);
   cursor: pointer;
-  font: inherit;
   transition: 0.2s;
 
   svg {
@@ -186,7 +184,7 @@ header {
 
   &:hover {
     border-color: var(--color-text-secondary);
-    background: var(--color-panel);
+    background-color: var(--color-panel);
   }
 }
 
@@ -223,7 +221,7 @@ header {
   border: 1px dashed var(--color-border);
   border-radius: 10px;
   color: var(--color-text-muted);
-  font-size: 13px;
+  font-size: 0.75rem;
   text-align: center;
 }
 

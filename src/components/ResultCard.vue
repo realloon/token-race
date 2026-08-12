@@ -176,17 +176,17 @@ function responseContent() {
   border-radius: 999px;
 
   &.success {
-    background: var(--color-success-bg);
+    background-color: var(--color-success-bg);
     color: var(--color-success);
   }
 
   &.error {
-    background: var(--color-error-bg);
+    background-color: var(--color-error-bg);
     color: var(--color-error);
   }
 
   &.running {
-    background: var(--color-primary-disabled);
+    background-color: var(--color-primary-disabled);
     color: var(--color-text-secondary);
   }
 }
@@ -195,7 +195,7 @@ function responseContent() {
   margin-left: auto;
   padding: 2px 8px;
   border-radius: 999px;
-  background: var(--color-bg);
+  background-color: var(--color-page);
   color: var(--color-text-secondary);
   font-size: 11px;
 
@@ -235,7 +235,7 @@ pre {
   margin: 0;
   padding: 10px;
   border-radius: 6px;
-  background: var(--color-bg);
+  background-color: var(--color-page);
   font-size: 12px;
   font-family: var(--mono);
   line-height: 1.5;
@@ -252,7 +252,6 @@ pre {
   color: var(--color-text-muted);
   background-color: transparent;
 
-  font: inherit;
   font-size: 12px;
 
   padding: unset;
@@ -277,7 +276,7 @@ pre {
   padding: 0;
   border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: var(--color-panel);
+  background-color: var(--color-panel);
   color: var(--color-text);
   opacity: 0;
   transform: scale(0.98);
@@ -296,7 +295,7 @@ pre {
   }
 
   &::backdrop {
-    background: rgb(0 0 0 / 0%);
+    background-color: rgb(0 0 0 / 0%);
     transition:
       background-color 0.2s ease,
       display 0.2s allow-discrete,
@@ -304,7 +303,7 @@ pre {
   }
 
   &[open]::backdrop {
-    background: rgb(0 0 0 / 64%);
+    background-color: rgb(0 0 0 / 64%);
   }
 }
 
@@ -349,7 +348,7 @@ pre {
   padding: 3px;
   border: 1px solid var(--color-border);
   border-radius: 7px;
-  background: var(--color-bg);
+  background-color: var(--color-page);
 
   &::before {
     position: absolute;
@@ -359,7 +358,7 @@ pre {
     left: 3px;
     width: calc(33.333% - 4px);
     border-radius: 5px;
-    background: var(--color-primary-subtle);
+    background-color: var(--color-primary-subtle);
     content: '';
     pointer-events: none;
     transition: 0.2s;
@@ -372,10 +371,9 @@ pre {
     padding: 5px 8px;
     border: none;
     border-radius: 5px;
-    background: transparent;
+    background-color: transparent;
     color: var(--color-text-secondary);
     cursor: pointer;
-    font: inherit;
     font-size: 12px;
     transition: 0.2s;
 
@@ -392,7 +390,7 @@ pre {
   }
 
   .raw-dialog[open]::backdrop {
-    background: rgb(0 0 0 / 0%);
+    background-color: rgb(0 0 0 / 0%);
   }
 }
 
@@ -418,10 +416,9 @@ pre {
 .raw-close {
   padding: 0;
   border: none;
-  background: none;
+  background-color: none;
   color: var(--color-text-muted);
   cursor: pointer;
-  font: inherit;
   font-size: 12px;
   transition: 0.2s;
 
