@@ -25,16 +25,24 @@
 
 :root {
   color-scheme: light dark;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+
+  font-family: var(--sans);
   scrollbar-gutter: stable both-edges;
-  -webkit-font-smoothing: antialiased;
+
+  @media (prefers-color-scheme: dark) {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+#app {
+    max-width: 960px;
+  padding: 24px;
 }
 
 body {
   margin: unset;
-  min-height: 100vh;
-  font-family: var(--sans);
-  color: var(--color-text);
-  background: var(--color-bg);
 }
 
 a {

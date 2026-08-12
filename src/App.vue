@@ -12,86 +12,81 @@ const { request, selectedIds, running, results, toggle, runAll } =
 </script>
 
 <template>
-  <main class="wrap">
-    <header>
-      <h1>
-        Token Race
-        <IconLogo />
-      </h1>
-      <div class="header-actions">
-        <div
-          class="mode-switch"
-          :class="{ stream: request.stream }"
-          role="group"
-          aria-label="Response mode"
-        >
-          <button
-            type="button"
-            class="mode-button"
-            :class="{ active: !request.stream }"
-            :aria-pressed="!request.stream"
-            @click="request.stream = false"
-          >
-            Complete
-          </button>
-          <button
-            type="button"
-            class="mode-button"
-            :class="{ active: request.stream }"
-            :aria-pressed="request.stream"
-            @click="request.stream = true"
-          >
-            Stream
-          </button>
-        </div>
+  <header>
+    <h1>
+      Token Race
+      <IconLogo />
+    </h1>
+    <div class="header-actions">
+      <span class="model-name" :title="request.model">
+        {{ request.model }}
+      </span>
+      <div
+        class="mode-switch"
+        :class="{ stream: request.stream }"
+        role="group"
+        aria-label="Response mode"
+      >
         <button
           type="button"
-          class="edit-request"
-          commandfor="request-editor"
-          command="show-modal"
-          aria-label="Edit request"
+          class="mode-button"
+          :class="{ active: !request.stream }"
+          :aria-pressed="!request.stream"
+          @click="request.stream = false"
         >
-          <IconEditor />
+          Complete
+        </button>
+        <button
+          type="button"
+          class="mode-button"
+          :class="{ active: request.stream }"
+          :aria-pressed="request.stream"
+          @click="request.stream = true"
+        >
+          Stream
         </button>
       </div>
-    </header>
+      <button
+        type="button"
+        class="edit-request"
+        commandfor="request-editor"
+        command="show-modal"
+        aria-label="Edit request"
+      >
+        <IconEditor />
+      </button>
+    </div>
+  </header>
 
-    <RequestPanel :request="request" />
-    <ProviderSelect
-      :providers="providers"
-      :selected-ids="selectedIds"
-      :running="running"
-      @toggle="toggle"
-      @run="runAll"
-    />
+  <RequestPanel :request="request" />
+  <ProviderSelect
+    :providers="providers"
+    :selected-ids="selectedIds"
+    :running="running"
+    @toggle="toggle"
+    @run="runAll"
+  />
 
-    <section class="results" aria-live="polite">
-      <div class="results-head">
-        <h2>Results</h2>
-        <span v-if="running">Testing selected providers...</span>
-        <span v-else-if="results.length">
-          {{ results.length }}
-          {{ results.length === 1 ? 'response' : 'responses' }}
-        </span>
-      </div>
+  <section class="results" aria-live="polite">
+    <div class="results-head">
+      <h2>Results</h2>
+      <span v-if="running">Testing selected providers...</span>
+      <span v-else-if="results.length">
+        {{ results.length }}
+        {{ results.length === 1 ? 'response' : 'responses' }}
+      </span>
+    </div>
 
-      <div v-if="results.length" class="result-grid">
-        <ResultCard v-for="r in results" :key="r.provider.id" :result="r" />
-      </div>
-      <div v-else class="empty-state">
-        {{ running ? 'Waiting for responses...' : 'Run to compare responses.' }}
-      </div>
-    </section>
-  </main>
+    <div v-if="results.length" class="result-grid">
+      <ResultCard v-for="r in results" :key="r.provider.id" :result="r" />
+    </div>
+    <div v-else class="empty-state">
+      {{ running ? 'Waiting for responses...' : 'Run to compare responses.' }}
+    </div>
+  </section>
 </template>
 
 <style scoped>
-.wrap {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 24px;
-}
-
 header {
   display: flex;
   align-items: center;
@@ -119,6 +114,12 @@ header {
   align-items: center;
   gap: 10px;
   margin-left: auto;
+}
+
+.model-name {
+  font-size: 0.875rem;
+  font-family: var(--mono);
+  font-weight: bold;
 }
 
 .mode-switch {
@@ -242,6 +243,10 @@ header {
   .header-actions {
     width: 100%;
     justify-content: flex-end;
+  }
+
+  .model-name {
+    max-width: min(220px, calc(100vw - 180px));
   }
 }
 </style>
