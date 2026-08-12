@@ -19,7 +19,7 @@ const activeInputs = computed(() =>
       </header>
 
       <section class="body">
-        <div>
+        <div class="base">
           <label>
             Model
             <input v-model="request.model" spellcheck="false" />
@@ -47,12 +47,12 @@ const activeInputs = computed(() =>
           <textarea v-model="request.instructions" rows="2"></textarea>
         </label>
 
-        <h3 class="messages-heading">Input messages</h3>
         <div class="input-list">
-          <template v-for="(m, i) in activeInputs" :key="i">
-            <span class="role">{{ m.role }}</span>
-            <input v-model="m.content" />
-          </template>
+          <h3>Input messages</h3>
+          <label v-for="message in activeInputs">
+            <span>{{ message.role }}</span>
+            <textarea v-model="<string>message.content" />
+          </label>
         </div>
       </section>
 
@@ -125,9 +125,13 @@ header {
 
 .body {
   flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   padding: 16px;
 
-  div {
+  .base {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
@@ -137,13 +141,31 @@ header {
       gap: 0;
     }
   }
+
+  .input-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+
+    h3 {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+    }
+
+    textarea {
+      field-sizing: content;
+    }
+  }
 }
 
 label {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
   font-size: 12px;
   color: var(--color-text-secondary);
-  margin-bottom: 10px;
 }
 
 input,
@@ -152,7 +174,6 @@ textarea {
   box-sizing: border-box;
   display: block;
   width: 100%;
-  margin-top: 4px;
   padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid var(--color-border);
@@ -172,13 +193,13 @@ textarea {
 }
 
 .stream-toggle {
-  display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
-  margin: 2px 0 16px;
+  gap: 8px;
+
   padding: 10px 12px;
   border: 1px solid var(--color-border);
-  border-radius: 7px;
+  border-radius: 6px;
   background-color: var(--color-page);
   cursor: pointer;
   transition: 0.2s;
@@ -197,32 +218,6 @@ textarea {
 select {
   appearance: none;
   -webkit-appearance: none;
-}
-
-.messages-heading {
-  margin: 18px 0 8px;
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
-}
-
-.input-list {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 8px;
-
-  .role {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    margin-top: 4px;
-    padding: 8px 10px;
-    border-radius: 6px;
-    border: 1px solid var(--color-border);
-    background-color: var(--color-page);
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--color-text);
-  }
 }
 
 footer {
