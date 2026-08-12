@@ -25,18 +25,18 @@ const { request, selectedIds, running, results, toggle, runAll } =
         <button
           type="button"
           class="mode-button"
-          :class="{ active: !request.stream }"
-          @click="request.stream = false"
-        >
-          Complete
-        </button>
-        <button
-          type="button"
-          class="mode-button"
           :class="{ active: request.stream }"
           @click="request.stream = true"
         >
           Stream
+        </button>
+        <button
+          type="button"
+          class="mode-button"
+          :class="{ active: !request.stream }"
+          @click="request.stream = false"
+        >
+          Complete
         </button>
       </div>
       <button
@@ -136,10 +136,11 @@ header {
     box-shadow: 0 1px 4px #00000016;
     pointer-events: none;
     transition: 0.2s;
+    transform: translateX(100%);
   }
 
   &.stream::before {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
 }
 

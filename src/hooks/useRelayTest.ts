@@ -7,7 +7,7 @@ export function useRelayTest() {
   const request = reactive<TestRequest>({
     model: 'gpt-5.6-luna',
     reasoning: 'none',
-    stream: false,
+    stream: true,
     instructions: 'you are luna',
     completeInputs: [
       {
