@@ -8,10 +8,15 @@ const { request } = defineProps<{ request: TestRequest }>()
 const activeInputs = computed(() =>
   request.stream ? request.streamInputs : request.completeInputs,
 )
+
+function closeOnBackdrop(event: MouseEvent) {
+  if (event.target !== event.currentTarget) return
+  ;(event.currentTarget as HTMLDialogElement).close()
+}
 </script>
 
 <template>
-  <dialog id="request-editor">
+  <dialog id="request-editor" @click="closeOnBackdrop">
     <form method="dialog">
       <header class="drawer-header">
         <h2 id="request-editor-title">Edit request</h2>
