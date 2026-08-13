@@ -27,11 +27,11 @@ function closeOnBackdrop(event: MouseEvent) {
         <div class="base">
           <label>
             Model
-            <input v-model="request.model" spellcheck="false" />
+            <input v-model="request.model" name="model" spellcheck="false" />
           </label>
           <label>
             Reasoning
-            <select v-model="request.reasoning">
+            <select v-model="request.reasoning" name="reasoning">
               <option value="none">none</option>
               <option value="low">low</option>
               <option value="medium">medium</option>
@@ -43,20 +43,23 @@ function closeOnBackdrop(event: MouseEvent) {
         </div>
 
         <label class="stream-toggle">
-          <input v-model="request.stream" type="checkbox" />
+          <input v-model="request.stream" type="checkbox" name="stream" />
           Stream response
         </label>
 
         <label>
           Instructions
-          <textarea v-model="request.instructions" rows="2"></textarea>
+          <textarea
+            v-model="request.instructions"
+            name="instructions"
+          ></textarea>
         </label>
 
         <div class="input-list">
           <h3>Input messages</h3>
           <label v-for="message in activeInputs">
             <span>{{ message.role }}</span>
-            <textarea v-model="<string>message.content" />
+            <textarea v-model="<string>message.content" name="content" />
           </label>
         </div>
       </section>
@@ -157,10 +160,6 @@ header {
       font-size: 0.75rem;
       color: var(--color-text-secondary);
     }
-
-    textarea {
-      field-sizing: content;
-    }
   }
 }
 
@@ -197,6 +196,15 @@ textarea {
   }
 }
 
+select {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+textarea {
+  field-sizing: content;
+}
+
 .stream-toggle {
   flex-direction: row;
   align-items: center;
@@ -218,11 +226,6 @@ textarea {
     width: fit-content;
     margin: unset;
   }
-}
-
-select {
-  appearance: none;
-  -webkit-appearance: none;
 }
 
 footer {
